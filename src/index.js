@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
         paddleHeight: 80,
         paddleSpeed: 2,
         ballXSpeed: 2,
-        initialYSpeed: 2
     }
 
     const canvas = document.getElementById("myCanvas")
@@ -23,12 +22,14 @@ document.addEventListener("DOMContentLoaded", ()=> {
     }
 
     setBall = () => {
-        console.log("win!")
         ball.x = canvas.width/2
         ball.y = canvas.height/2
         ball.radius = 8
-        ball.dx = gameState.ballXSpeed
-        ball.dy = gameState.initialYSpeed
+        ball.dx = 0
+        ball.dy = 0
+        setTimeout(() => {ball.dx = gameState.ballXSpeed * (Math.floor(Math.random()) === 0 ? -1 : 1)
+        ball.dy = Math.random()+1}, 500)
+        
     }
     setBall()
 
